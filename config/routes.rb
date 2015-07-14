@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+
+  # CREATE
+  get('/new_idea', {:controller => 'ideas', :action => 'new'})
+  get('/create_idea', {:controller => 'ideas', :action => 'create'})
+
+
+  # READ
   get('/ideas/:id', {:controller => 'ideas', :action => 'show'})
 
   # The priority is based upon order of creation: first created -> highest priority.
