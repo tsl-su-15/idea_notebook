@@ -8,6 +8,13 @@ class IdeasController < ApplicationController
   end
 
   def create
-    # write code to save a new idea in the database
+    @idea = Idea.new
+    @idea.desc = params['desc']
+    @idea.save
+
+    redirect_to "/ideas/#{@idea.id}"
   end
 end
+
+
+
