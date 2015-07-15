@@ -4,9 +4,11 @@ Rails.application.routes.draw do
   get('/new_idea', {:controller => 'ideas', :action => 'new'})
   get('/create_idea', {:controller => 'ideas', :action => 'create'})
 
-
   # READ
   get('/ideas/:id', {:controller => 'ideas', :action => 'show'})
+
+  # DESTROY
+  get('/destroy_idea/:id', {:controller => 'ideas', :action => 'destroy'})
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

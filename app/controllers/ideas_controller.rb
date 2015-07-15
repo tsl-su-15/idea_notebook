@@ -14,6 +14,11 @@ class IdeasController < ApplicationController
 
     redirect_to "/ideas/#{@idea.id}"
   end
+
+  def destroy
+    @idea = Idea.find(params['id'])
+    @idea.destroy
+  end
 end
 
 
