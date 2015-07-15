@@ -18,6 +18,8 @@ class IdeasController < ApplicationController
   def destroy
     @idea = Idea.find(params['id'])
     @idea.destroy
+
+    redirect_to "/ideas"
   end
 
   def edit
@@ -30,6 +32,10 @@ class IdeasController < ApplicationController
     @idea.save
 
     redirect_to "/ideas/#{@idea.id}"
+  end
+
+  def index
+    @ideas = Idea.all
   end
 end
 
