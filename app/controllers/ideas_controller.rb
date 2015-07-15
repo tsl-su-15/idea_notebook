@@ -19,7 +19,24 @@ class IdeasController < ApplicationController
     @idea = Idea.find(params['id'])
     @idea.destroy
   end
+
+  def edit
+    @idea = Idea.find(params['id'])
+  end
+
+  def update
+    @idea = Idea.find(params['id'])
+    @idea.desc = params['desc']
+    @idea.save
+
+    redirect_to "/ideas/#{@idea.id}"
+  end
 end
+
+
+
+
+
 
 
 

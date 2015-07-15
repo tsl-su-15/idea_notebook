@@ -1,0 +1,8 @@
+<h1>Edit idea #<%= @idea.id %></h1>
+<form action="/update_idea/<%= @idea.id %>">
+  <div class="form-group">
+    <label for="">Your Idea</label>
+    <input type="text" class="form-control" name="desc" id="" value="<%= @idea.desc %>" placeholder="<%= @idea.desc %>">
+  </div>
+  <button type="submit" class="btn btn-default">Submit</button>
+</form>

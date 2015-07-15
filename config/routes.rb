@@ -7,6 +7,11 @@ Rails.application.routes.draw do
   # READ
   get('/ideas/:id', {:controller => 'ideas', :action => 'show'})
 
+  # UPDATE
+  get('/ideas/:id/edit', {:controller => 'ideas', :action => 'edit'})
+  get('/update_idea/:id', {:controller => 'ideas', :action => 'update'})
+
+
   # DESTROY
   get('/destroy_idea/:id', {:controller => 'ideas', :action => 'destroy'})
 
