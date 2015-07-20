@@ -4,15 +4,21 @@ class IdeasController < ApplicationController
   end
 
   def new
-
+    @idea = Idea.new
   end
 
   def create
+    # don't create a new idea if the user input is blank
     @idea = Idea.new
     @idea.desc = params['desc']
-    @idea.save
 
-    redirect_to "/ideas/#{@idea.id}"
+    if @idea.save
+      redirect_to "/ideas/#{@idea.id}"
+    else
+      render 'new'
+      # redirect_to "/new_idea", :notice => 'There was a problem submitting the form'
+    end
+
   end
 
   def destroy
@@ -29,9 +35,12 @@ class IdeasController < ApplicationController
   def update
     @idea = Idea.find(params['id'])
     @idea.desc = params['desc']
-    @idea.save
 
-    redirect_to "/ideas/#{@idea.id}"
+    if @idea.save
+      redirect_to "/ideas/#{@idea.id}"
+    else
+      render 'edit'
+    end
   end
 
   def index

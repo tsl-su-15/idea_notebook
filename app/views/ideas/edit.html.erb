@@ -1,4 +1,13 @@
 <h1>Edit idea #<%= @idea.id %></h1>
+<ul>
+  <% if @idea.errors %>
+    <ul>
+    <% @idea.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  <% end %>
+</ul>
 <form action="/update_idea/<%= @idea.id %>">
   <div class="form-group">
     <label for="">Your Idea</label>
