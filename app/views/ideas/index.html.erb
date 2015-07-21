@@ -1,12 +1,12 @@
-<h1>Ideas <small><a href="/ideas/new">add a new idea</a></small></h1>
+<h1>Ideas <small><%= link_to 'add a new idea', new_idea_path %></small></h1>
 <table class="table table-striped">
   <% @ideas.each do |idea| %>
     <tr>
       <td><%= idea.desc %></td>
       <td>
-        <a href="/ideas/<%= idea.id %>">Show</a>
-        <a href="/ideas/<%= idea.id %>/edit">Edit</a>
-        <a href="/ideas/<%= idea.id %>" data-method="delete">Destroy</a>
+        <%= link_to 'Show', idea_path(idea.id) %>
+        <%= link_to 'Edit', edit_idea_path(idea.id) %>
+        <%= link_to 'Destroy', idea_path(idea.id), method: :delete, data: {confirm: "Are you sure?"} %>
       </td>
     </tr>
   <% end %>

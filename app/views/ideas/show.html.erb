@@ -1,8 +1,7 @@
 <h1><%= @idea.desc %></h1>
 <div>
   <!-- Get the edit link working -->
-  <%= link_to "Edit", "/ideas/#{ @idea.id }/edit" %> |
-  <%= link_to "Destroy","/ideas/#{ @idea.id }", method: :delete, data: { confirm: "Are you sure?" }  %>
-  <a href="/ideas/<%= @idea.id %>" data-method="delete">Destroy</a>
+  <%= link_to "Edit", edit_idea_path(@idea.id) %> |
+  <%= link_to "Destroy", idea_path(@idea.id), method: :delete, data: { confirm: "Are you sure?" }  %>
 </div>
 

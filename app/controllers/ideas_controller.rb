@@ -13,7 +13,7 @@ class IdeasController < ApplicationController
     @idea.desc = params['desc']
 
     if @idea.save
-      redirect_to "/ideas/#{@idea.id}"
+      redirect_to idea_url(@idea.id)
     else
       render 'new'
     end
@@ -24,7 +24,7 @@ class IdeasController < ApplicationController
     @idea = Idea.find(params['id'])
     @idea.destroy
 
-    redirect_to "/ideas"
+    redirect_to ideas_url
   end
 
   def edit
@@ -36,7 +36,7 @@ class IdeasController < ApplicationController
     @idea.desc = params['desc']
 
     if @idea.save
-      redirect_to "/ideas/#{@idea.id}"
+      redirect_to idea_url(@idea.id)
     else
       render 'edit'
     end
