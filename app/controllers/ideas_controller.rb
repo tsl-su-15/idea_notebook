@@ -16,7 +16,6 @@ class IdeasController < ApplicationController
       redirect_to "/ideas/#{@idea.id}"
     else
       render 'new'
-      # redirect_to "/new_idea", :notice => 'There was a problem submitting the form'
     end
 
   end

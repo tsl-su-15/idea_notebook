@@ -6,7 +6,7 @@
       <td>
         <a href="/ideas/<%= idea.id %>">Show</a>
         <a href="/ideas/<%= idea.id %>/edit">Edit</a>
-        <a href="/destroy_idea/<%= idea.id %>">Destroy</a>
+        <a href="/ideas/<%= idea.id %>" data-method="delete">Destroy</a>
       </td>
     </tr>
   <% end %>

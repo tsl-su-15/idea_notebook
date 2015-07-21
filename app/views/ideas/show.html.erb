@@ -2,6 +2,6 @@
 <div>
   <!-- Get the edit link working -->
   <a href="/ideas/<%= @idea.id %>/edit">Edit</a> |
-  <a href="/destroy_idea/<%= @idea.id %>">Destroy</a>
+  <a href="/ideas/<%= @idea.id %>" data-method="delete">Destroy</a>
 </div>
 

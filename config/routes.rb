@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
 
+  # edit this app so it uses the 'post', 'patch' and 'delete' http verbs and form_tag
+
+
   # CREATE
-  get('/new_idea', {:controller => 'ideas', :action => 'new'})
-  get('/create_idea', {:controller => 'ideas', :action => 'create'})
+  get('/ideas/new', {:controller => 'ideas', :action => 'new'})
+  post('/ideas', {:controller => 'ideas', :action => 'create'})
 
   # READ
   get('/ideas/:id', {:controller => 'ideas', :action => 'show'})
@@ -10,11 +13,11 @@ Rails.application.routes.draw do
 
   # UPDATE
   get('/ideas/:id/edit', {:controller => 'ideas', :action => 'edit'})
-  get('/update_idea/:id', {:controller => 'ideas', :action => 'update'})
+  patch('/ideas/:id', {:controller => 'ideas', :action => 'update'})
 
 
   # DESTROY
-  get('/destroy_idea/:id', {:controller => 'ideas', :action => 'destroy'})
+  delete('/ideas/:id', {:controller => 'ideas', :action => 'destroy'})
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
