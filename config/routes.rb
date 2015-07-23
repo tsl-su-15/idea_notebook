@@ -1,5 +1,22 @@
 Rails.application.routes.draw do
 
+  # Routes for the Comment resource:
+  # CREATE
+  get '/comments/new',      :controller => 'comments', :action => 'new',    :as => 'new_comment'
+  post '/comments',         :controller => 'comments', :action => 'create', :as => 'comments'
+
+  # READ
+  get '/comments',          :controller => 'comments', :action => 'index'
+  get '/comments/:id',      :controller => 'comments', :action => 'show',   :as => 'comment'
+
+  # UPDATE
+  get '/comments/:id/edit', :controller => 'comments', :action => 'edit',   :as => 'edit_comment'
+  patch '/comments/:id',    :controller => 'comments', :action => 'update'
+
+  # DELETE
+  delete '/comments/:id',   :controller => 'comments', :action => 'destroy'
+  #------------------------------
+
   # edit this app so it uses the 'post', 'patch' and 'delete' http verbs and form_tag
 
 
