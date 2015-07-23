@@ -5,3 +5,9 @@
   <%= link_to "Destroy", idea_path(@idea.id), method: :delete, data: { confirm: "Are you sure?" }  %>
 </div>
 
+<!-- Display a list of associated comments with clickable links to the comment's show page -->
+<div class="list-group">
+  <% @comments.each do |comment| %>
+    <%= link_to comment.contents, comment_path(comment.id), :class => 'list-group-item' %>
+  <% end %>
+</div>

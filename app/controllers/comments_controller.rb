@@ -5,6 +5,7 @@ class CommentsController < ApplicationController
 
   def show
     @comment = Comment.find(params[:id])
+    @idea = Idea.find(@comment.idea_id)
   end
 
   def new

@@ -13,10 +13,8 @@
               <dt>Contents</dt>
               <dd><%= @comment.contents %></dd>
 
-              <!-- Display a clickable link with the name of this comment's associated idea -->
               <dt>Idea</dt>
-              <dd><%= @comment.idea_id %></dd>
-
+              <dd><%= link_to @idea.desc, idea_path(@idea.id) %></dd>
             </dl>
             <div class="btn-group btn-group-justified">
               <%= link_to comments_url, :class => "btn btn-primary" do %>
