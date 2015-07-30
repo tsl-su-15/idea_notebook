@@ -4,10 +4,21 @@
   <%= link_to "Edit", edit_idea_path(@idea.id) %> |
   <%= link_to "Destroy", idea_path(@idea.id), method: :delete, data: { confirm: "Are you sure?" }  %>
 </div>
+<br>
 
+<%= form_tag(comments_url) do %>
+  <label for="contents" class="sr-only">Contents:</label>
+  <input type="hidden" name="idea_id" value="<%= @idea.id %>">
+  <input type="text" id="contents" name="contents" class='form-control' placeholder="your comments..." value="<%= @comment.contents %>">
+<% end %>
+
+<br>
 <!-- Display a list of associated comments with clickable links to the comment's show page -->
 <div class="list-group">
   <% @comments.each do |comment| %>
-    <%= link_to comment.contents, comment_path(comment.id), :class => 'list-group-item' %>
+    <%= link_to comment_path(comment.id), :class => 'list-group-item' do %>
+      <div><strong><%= comment.user.email %>:</strong></div>
+      <div><%= comment.contents %></div>
+    <% end %>
   <% end %>
 </div>

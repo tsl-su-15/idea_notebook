@@ -16,9 +16,10 @@ class CommentsController < ApplicationController
     @comment = Comment.new
     @comment.contents = params[:contents]
     @comment.idea_id = params[:idea_id]
+    @comment.user_id = current_user.id
 
     if @comment.save
-      redirect_to comments_url, :notice => "Comment created successfully."
+      redirect_to :back, :notice => "Comment created successfully."
     else
       render 'new'
     end

@@ -24,12 +24,23 @@
 
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-8">
-        <ul class="nav navbar-nav"><!--
-          <li><a href="list_of_ideas.html">All ideas</a></li>
-          <li><a href="details.html">Details</a></li>
-          <li><a href="new.html">New Idea</a></li>
-          <li><a href="edit.html">Edit Idea</a></li> -->
-        </ul>
+        <div class="container-fluid">
+          <ul class="nav navbar-nav"><!--
+            <li><a href="list_of_ideas.html">All ideas</a></li>
+            <li><a href="details.html">Details</a></li>
+            <li><a href="new.html">New Idea</a></li>
+            <li><a href="edit.html">Edit Idea</a></li> -->
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <% if user_signed_in? %>
+              <li><a href="<%= destroy_user_session_path %>" data-method="delete">Sign out</a></li>
+              <li><a href="<%= edit_user_registration_path %>"><%= current_user.email %></a></li>
+            <% else %>
+              <li><a href="<%= new_user_registration_path %>">Sign up</a></li>
+              <li><a href="<%= new_user_session_path %>">Sign in</a></li>
+            <% end %>
+          </ul>
+        </div>
       </div><!-- /.navbar-collapse -->
     </nav>
 
@@ -37,9 +48,15 @@
       <div class="row">
         <div class="col-md-12">
           <% if notice %>
-            <div class="alert alert-danger alert-dismissible" role="alert">
+            <div class="alert alert-info alert-dismissible notice" role="alert">
               <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-              There was a problem submitting your form
+              <%= notice %>
+            </div>
+          <% end %>
+          <% if alert %>
+            <div class="alert alert-danger alert-dismissible alert" role="alert">
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <%= alert %>
             </div>
           <% end %>
           <%= yield %>

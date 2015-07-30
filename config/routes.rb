@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+
+  devise_for :users
+  root 'ideas#index'
   # Routes for the Comment resource:
   # CREATE
   get '/comments/new',      :controller => 'comments', :action => 'new',    :as => 'new_comment'
