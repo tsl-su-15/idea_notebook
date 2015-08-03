@@ -1,19 +1,2 @@
 <h1>New idea</h1>
-<ul>
-  <% if @idea.errors %>
-    <ul>
-    <% @idea.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-    </ul>
-  <% end %>
-</ul>
-<%= form_tag('/ideas') do %>
-<!-- <form action="/create_idea"> -->
-  <div class="form-group">
-    <label for="">Your Idea</label>
-    <input type="text" class="form-control" name="desc" id="" placeholder="create a social network for pet owners" value="<%= @idea.desc %>">
-  </div>
-  <button type="submit" class="btn btn-default">Submit</button>
-<!-- </form> -->
-<% end %>
+<%= render 'form' %>

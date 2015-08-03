@@ -17,8 +17,7 @@ class IdeasController < ApplicationController
 
   def create
     # don't create a new idea if the user input is blank
-    @idea = Idea.new
-    @idea.desc = params['desc']
+    @idea = Idea.new(idea_params)
 
     if @idea.save
       redirect_to idea_url(@idea.id)
@@ -38,9 +37,7 @@ class IdeasController < ApplicationController
   end
 
   def update
-    @idea.desc = params['desc']
-
-    if @idea.save
+    if @idea.update_attributes(idea_params)
       redirect_to idea_url(@idea.id)
     else
       render 'edit'
@@ -60,6 +57,10 @@ class IdeasController < ApplicationController
 
     def set_idea
       @idea = Idea.find(params['id'])
+    end
+
+    def idea_params
+      params.require(:idea).permit(:desc)
     end
 
 

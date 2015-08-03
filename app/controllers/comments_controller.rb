@@ -4,11 +4,19 @@ class CommentsController < ApplicationController
   def index
     @comments = Comment.all
 
-
+    respond_to do |format|
+      format.html
+      format.json { render json: @comments}
+    end
   end
 
   def show
     @idea = Idea.find(@comment.idea_id)
+
+    respond_to do |f|
+      f.html
+      f.json {render json: @comment}
+    end
   end
 
   def new
