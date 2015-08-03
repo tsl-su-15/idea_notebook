@@ -24,9 +24,7 @@ class CommentsController < ApplicationController
   end
 
   def create
-    @comment = Comment.new
-    @comment.contents = params[:contents]
-    @comment.idea_id = params[:idea_id]
+    @comment = Comment.new(comment_params)
     @comment.user_id = current_user.id
 
     if @comment.save
@@ -40,10 +38,9 @@ class CommentsController < ApplicationController
   end
 
   def update
-    @comment.contents = params[:contents]
-    @comment.idea_id = params[:idea_id]
+    @comment.user_id = current_user.id
 
-    if @comment.save
+    if @comment.update_attributes(comment_params)
       redirect_to comment_url(@comment.id), :notice => "Comment updated successfully."
     else
       render 'edit'
@@ -60,5 +57,9 @@ class CommentsController < ApplicationController
 
     def set_comment
       @comment = Comment.find(params[:id])
+    end
+
+    def comment_params
+      params.require(:comment).permit(:contents, :idea_id)
     end
 end
