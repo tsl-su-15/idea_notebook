@@ -1,10 +1,13 @@
 class CommentsController < ApplicationController
+  before_action :set_comment, only: [:show, :edit, :update, :destroy]
+
   def index
     @comments = Comment.all
+
+
   end
 
   def show
-    @comment = Comment.find(params[:id])
     @idea = Idea.find(@comment.idea_id)
   end
 
@@ -26,12 +29,9 @@ class CommentsController < ApplicationController
   end
 
   def edit
-    @comment = Comment.find(params[:id])
   end
 
   def update
-    @comment = Comment.find(params[:id])
-
     @comment.contents = params[:contents]
     @comment.idea_id = params[:idea_id]
 
@@ -43,10 +43,14 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    @comment = Comment.find(params[:id])
-
     @comment.destroy
 
     redirect_to comments_url, :notice => "Comment deleted."
   end
+
+  private
+
+    def set_comment
+      @comment = Comment.find(params[:id])
+    end
 end
