@@ -1,6 +1,7 @@
 class IdeasController < ApplicationController
+  before_action :set_idea, only: [:show, :edit, :update, :destroy]
+
   def show
-    @idea = Idea.find(params['id'])
     @comments = Comment.where(:idea_id => @idea.id)
     @comment = Comment.new
   end
@@ -23,18 +24,15 @@ class IdeasController < ApplicationController
   end
 
   def destroy
-    @idea = Idea.find(params['id'])
     @idea.destroy
 
     redirect_to ideas_url
   end
 
   def edit
-    @idea = Idea.find(params['id'])
   end
 
   def update
-    @idea = Idea.find(params['id'])
     @idea.desc = params['desc']
 
     if @idea.save
@@ -47,6 +45,14 @@ class IdeasController < ApplicationController
   def index
     @ideas = Idea.all
   end
+
+  private
+
+    def set_idea
+      @idea = Idea.find(params['id'])
+    end
+
+
 end
 
 
