@@ -4,6 +4,11 @@ class IdeasController < ApplicationController
   def show
     @comments = Comment.where(:idea_id => @idea.id)
     @comment = Comment.new
+
+    respond_to do |format|
+      format.html { render 'show' }
+      format.json { render json: @idea}
+    end
   end
 
   def new
@@ -44,6 +49,11 @@ class IdeasController < ApplicationController
 
   def index
     @ideas = Idea.all
+
+    respond_to do |format|
+      format.html { render 'index' }
+      format.json { render json: @ideas}
+    end
   end
 
   private
