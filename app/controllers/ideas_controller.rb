@@ -19,10 +19,13 @@ class IdeasController < ApplicationController
     # don't create a new idea if the user input is blank
     @idea = Idea.new(idea_params)
 
-    if @idea.save
-      redirect_to ideas_url
-    else
-      render 'new'
+    respond_to do |format|
+      if @idea.save
+        format.html { redirect_to ideas_url }
+        format.js { render 'create' }
+      else
+        format.html { render 'new' }
+      end
     end
 
   end
