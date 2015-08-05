@@ -1,4 +1,23 @@
 <h1>Ideas <small><%= link_to 'add a new idea', new_idea_path %></small></h1>
+
+<ul>
+  <% if @idea.errors %>
+    <ul>
+    <% @idea.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  <% end %>
+</ul>
+
+<%= form_for(@idea) do |f| %>
+  <div class="form-group">
+    <%= f.label :desc, class: 'sr-only' %>
+    <%= f.text_field :desc, placeholder: 'Add a new idea...', class: 'form-control' %>
+  </div>
+<% end %>
+
+
 <table class="table table-striped">
   <% @ideas.each do |idea| %>
     <tr>
@@ -12,3 +31,6 @@
   <% end %>
 
 </table>
+
+
+<!-- Get the new idea form functional at the top of the ideas index page -->

@@ -20,7 +20,7 @@ class IdeasController < ApplicationController
     @idea = Idea.new(idea_params)
 
     if @idea.save
-      redirect_to idea_url(@idea.id)
+      redirect_to ideas_url
     else
       render 'new'
     end
@@ -46,6 +46,7 @@ class IdeasController < ApplicationController
 
   def index
     @ideas = Idea.all
+    @idea = Idea.new
 
     respond_to do |format|
       format.html { render 'index' }
