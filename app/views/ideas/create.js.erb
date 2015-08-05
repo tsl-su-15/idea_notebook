@@ -1,1 +1,7 @@
-$( "tbody" ).append( "<tr><td><%= @idea.desc %></td><td></td></tr>" );
+$( "tbody" ).append( "<%= j(render 'idea', idea: @idea) %>" );
+
+$('tr#idea_<%= @idea.id %>')
+              .hide()
+              .fadeIn();
+
+$('#new_idea input').val("");
