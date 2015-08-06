@@ -1,0 +1,7 @@
+<%= form_for(@idea, remote: true) do |f| %>
+  <div class="form-group">
+      <%= f.label :desc, class: 'sr-only' %>
+      <%= f.text_field :desc, placeholder: "#{@idea.desc}", class: 'form-control' %>
+    </div>
+<% end %>
+

@@ -1,4 +1,4 @@
 // 2. replace the text in the selected idea row with a form
-$('#idea_<%= @idea.id %> .idea_desc').html('test');
+$('#idea_<%= @idea.id %> .idea-desc').html('<%= j(render 'ajax_form') %>');
 
 // 3. make sure the form is set up for AJAX

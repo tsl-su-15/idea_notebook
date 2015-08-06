@@ -48,10 +48,13 @@ class IdeasController < ApplicationController
   end
 
   def update
-    if @idea.update_attributes(idea_params)
-      redirect_to idea_url(@idea.id)
-    else
-      render 'edit'
+    respond_to do |format|
+      if @idea.update_attributes(idea_params)
+        format.html {redirect_to idea_url(@idea.id)}
+        format.js
+      else
+        render 'edit'
+      end
     end
   end
 

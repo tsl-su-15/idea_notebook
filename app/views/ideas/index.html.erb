@@ -10,27 +10,11 @@
   <% end %>
 </ul>
 
-<%= form_for(@idea, remote: true) do |f| %>
-  <div class="form-group">
-    <%= f.label :desc, class: 'sr-only' %>
-    <%= f.text_field :desc, placeholder: 'Add a new idea...', class: 'form-control' %>
-  </div>
-<% end %>
-
+<h4>Add a new idea</h4>
+<%= render 'ajax_form' %>
 
 <table class="table table-striped">
   <% @ideas.each do |idea| %>
-    <tr id="idea_<%= idea.id %>">
-      <td class="idea_desc"><%= idea.desc %></td>
-      <td>
-        <%= link_to 'Show', idea_path(idea.id) %>
-        <%= link_to 'Edit', edit_idea_path(idea.id), remote: true %>
-        <%= link_to 'Destroy', idea_path(idea.id), method: :delete, remote: true, data: {confirm: "Are you sure?"} %>
-      </td>
-    </tr>
+    <%= render 'idea', idea: idea %>
   <% end %>
-
 </table>
-
-
-<!-- Get the new idea form functional at the top of the ideas index page -->
